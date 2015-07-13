@@ -215,12 +215,12 @@ public class FaceAnimator : EmofaniGlobal
 		SetFloat("arousal", arousal);
 		pleasure = Mathf.Lerp(GetFloat("pleasure"), (float)targetPleasure, expT);
 		SetFloat("pleasure", pleasure);
-		gazeXEyes = Mathf.Lerp(gazeXEyes, (float)targetGazeX / 10, gazeTEyes);
-		gazeYEyes = Mathf.Lerp(gazeYEyes, (float)targetGazeY / 10, gazeTEyes);
-		gazeZEyes = Mathf.Lerp(gazeZEyes, (float)targetGazeZ / 10, gazeTEyes);
-		gazeXHead = Mathf.Lerp(gazeXHead, (float)targetGazeX / 10, gazeTHead);
-		gazeYHead = Mathf.Lerp(gazeYHead, (float)targetGazeY / 10, gazeTHead);
-		gazeZHead = Mathf.Lerp(gazeZHead, (float)targetGazeZ / 10, gazeTHead);
+		gazeXEyes = Mathf.Lerp(gazeXEyes, (float)targetGazeX, gazeTEyes);
+		gazeYEyes = Mathf.Lerp(gazeYEyes, (float)targetGazeY, gazeTEyes);
+		gazeZEyes = Mathf.Lerp(gazeZEyes, (float)targetGazeZ, gazeTEyes);
+		gazeXHead = Mathf.Lerp(gazeXHead, (float)targetGazeX, gazeTHead);
+		gazeYHead = Mathf.Lerp(gazeYHead, (float)targetGazeY, gazeTHead);
+		gazeZHead = Mathf.Lerp(gazeZHead, (float)targetGazeZ, gazeTHead);
 
 	}
 

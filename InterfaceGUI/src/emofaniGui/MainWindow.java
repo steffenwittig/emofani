@@ -385,7 +385,7 @@ public class MainWindow extends JFrame {
 		gazePanel.setLayout(new BoxLayout(gazePanel, BoxLayout.Y_AXIS));
 		gazeXSlider = addParamSlider("gazex", -200, 200, gazePanel);
 		gazeYSlider = addParamSlider("gazey", -200, 200, gazePanel);
-		gazeZSlider = addParamSlider("gazez", 0, 1000, gazePanel);
+		gazeZSlider = addParamSlider("gazez", 0, 400, gazePanel);
 
 		/*
 		 * create Slider panel and add Gaze and Emotion panels

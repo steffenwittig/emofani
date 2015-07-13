@@ -3,9 +3,13 @@
 
 emofani was created as part of my Bachelor's Thesis *Parameterized Facial Animation for Human Robot Interaction* and is a simple program to render a lively animated face to enhance human-robot-interaction. emofani was formerly called *ParamFace*.
 
+![emofani output](http://steffenwittig.com/wp-content/uploads/2015/07/emofani.png "emofani output")
+
 The displayed expression and other parameters can be controlled through interprocess communication, using the UDP protocol. The virtual face and its expressions are designed to raise the willingness of potential users to engage in interaction with the robotic guide and the face displays signs of "being alive" to show that it is active.
 
 emofani's expression parameters are based on James A. Russell's [*circumplex model of emotion*](https://en.wikipedia.org/wiki/Emotion_classification#Circumplex_model), a two-dimensional emotion model. The widely used [*FACS*](https://en.wikipedia.org/wiki/Facial_Action_Coding_System) system would be richer but less intuitive to use. However, using FACS values internally would help to create more precise expressions, instead of the current expressions, that are designed by heart. This is on the TODO list.
+
+<img src="http://steffenwittig.com/wp-content/uploads/2015/07/emofani_emotion_space.png" title="emofani's emotion space" alt="emofani's emotion space" width="100%" style="max-width:400px"/>
 
 I have created this repository to share emofani, to find collaborators to extend its features ([feel free to contact me](mailto:emofani@steffenwittig.com)), and hopefully turn it into a useful and professional software for human-robot-interaction.
 
@@ -44,6 +48,10 @@ Examples:
 	t:1424766715566;s:192.168.2.145;p:11001;d:gazex=57
 	t:1424766717783;s:192.168.2.145;p:11001;d:talking=true
 
+Note: The gaze coordinates are referring to a point in space, that is relative to the center of the character's eyes, measured in centimeters. The character's head height is 25cm high and 20cm wide. Here's a diagram:
+
+![emofani's gaze coordinate system](http://steffenwittig.com/wp-content/uploads/2015/07/emofani_gaze_coordinates.png "emofani's gaze coordinate system")
+
 ### From emofani
 
     status:[status];arousal:[arousal];pleasure:[pleasure];gazex:[gazex];gazey:[gazey];gazez:[gazez];talking:[talking];error:[error]
@@ -62,8 +70,6 @@ following information can be found in the status message.
 
 emofani currently features a very simple, low-poly female face design. There are some minor issues with the eyebrows and eyes, but it gets the job done. Reworking it is on my TODO list. The character's name is Stefanie, by the way.
 
-![emofani output](http://steffenwittig.com/wp-content/uploads/2015/07/emofani.png "emofani output")
-
 # TODO
 To let you know about my plans and what is bugging me about emofani, here's my TODO list:
 
@@ -73,4 +79,5 @@ To let you know about my plans and what is bugging me about emofani, here's my T
 - implement FACS instead of fixed expressions, designed by hand
 - implement a more versatile face design, that can be parameterized to create trustworthy and sympathetic faces for users with varying cultural backgrounds (the current face design was mainly evaluated with German students)
 - implement text-to-speech solution and phoneme based lip animation
-- the `exited` expression looks very wrong when `talking` is set to true
+- the `exited` expression looks wrong when `talking` is set to true
+- implement measures for back-projection systems to correct the keystone effect and possibly other distortions

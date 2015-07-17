@@ -220,7 +220,7 @@ public class MainWindow extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.add(this.getExpressionsPanel());
-		panel.add(this.getTalkPanel());
+//		panel.add(this.getTalkPanel());
 		panel.add(this.getSliderPanel());
 		return panel;
 	}

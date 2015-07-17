@@ -47,4 +47,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<description>A simple GUI to send UDP messages to a running emofani application. It allows to control expression, gaze and other parameters.</description>
 </project>

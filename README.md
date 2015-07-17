@@ -7,9 +7,11 @@ emofani was created as part of my Bachelor's Thesis *Parameterized Facial Animat
 
 The displayed expression and other parameters can be controlled through interprocess communication, using the UDP protocol. The virtual face and its expressions are designed to raise the willingness of potential users to engage in interaction with the robotic guide and the face displays signs of "being alive" to show that it is active.
 
+![emofani architecture](http://steffenwittig.com/wp-content/uploads/2015/07/emofani_architecture.png "emofani architecture")
+
 emofani's expression parameters are based on James A. Russell's [*circumplex model of emotion*](https://en.wikipedia.org/wiki/Emotion_classification#Circumplex_model), a two-dimensional emotion model. The widely used [*FACS*](https://en.wikipedia.org/wiki/Facial_Action_Coding_System) system would be richer but less intuitive to use. However, using FACS values internally would help to create more precise expressions, instead of the current expressions, that are designed by heart. This is on the TODO list.
 
-<img src="http://steffenwittig.com/wp-content/uploads/2015/07/emofani_emotion_space.png" title="emofani's emotion space" alt="emofani's emotion space" width="100%" style="max-width:400px"/>
+![emofani emotion space](http://steffenwittig.com/wp-content/uploads/2015/07/emofani_emotion_space.png "emofani emotion space")
 
 I have created this repository to share emofani, to find collaborators to extend its features ([feel free to contact me](mailto:emofani@steffenwittig.com)), and hopefully turn it into a useful and professional software for human-robot-interaction.
 

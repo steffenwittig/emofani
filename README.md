@@ -5,7 +5,7 @@ emofani was created as part of my Bachelor's Thesis *Parameterized Facial Animat
 
 ![emofani output](http://steffenwittig.com/wp-content/uploads/2015/07/emofani.png "emofani output")
 
-The displayed expression and other parameters can be controlled through interprocess communication, using the UDP protocol. The virtual face and its expressions are designed to raise the willingness of potential users to engage in interaction with the robotic guide and the face displays signs of "being alive" to show that it is active.
+The displayed expression and other parameters can be controlled through interprocess communication, using the UDP protocol. The virtual face and its expressions are designed to raise the willingness of potential users to engage in interaction with a robotic system. The face displays signs of "being alive" (blinking, breathing, micro-movements) to show that it is active.
 
 ![emofani architecture](http://steffenwittig.com/wp-content/uploads/2015/07/emofani_architecture.png "emofani architecture")
 

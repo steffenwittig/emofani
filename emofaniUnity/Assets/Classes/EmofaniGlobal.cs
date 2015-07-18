@@ -13,10 +13,10 @@ public class EmofaniGlobal : MonoBehaviour
 	protected Camera mainCamera;
 
 	/// <summary>
-	/// Gets the UDPListener object from the Unity3D prefab in the scene.
+	/// Gets the UDPListener component from the scene
 	/// </summary>
 	/// <value>The UDPListener.</value>
-	protected UdpListener UDPListener {
+	protected UdpListener Listener {
 		get {
 			if (this.udp == null) {
 				GameObject udpObj = GameObject.Find("UDPListener");
@@ -29,13 +29,13 @@ public class EmofaniGlobal : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Gets the GuiScript object from the Unity3D prefab in the scene.
+	/// Gets the EmofaniGUI component from the scene
 	/// </summary>
 	/// <value>The GUI script.</value>
 	protected EmofaniGUI GuiScript {
 		get {
 			if (this.guiScript == null) {
-				GameObject guiObject = GameObject.Find("GUIObject");
+				GameObject guiObject = GameObject.Find("MainCamera");
 				if (guiObject != null) {
 					this.guiScript = guiObject.GetComponent<EmofaniGUI>();
 				}
@@ -45,7 +45,7 @@ public class EmofaniGlobal : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Gets the FaceAnim object from the Unity3D prefab in the scene.
+	/// Gets the FaceAnimator component from the scene
 	/// </summary>
 	/// <value>The face animation.</value>
 	protected FaceAnimator FaceAnim {
@@ -61,7 +61,7 @@ public class EmofaniGlobal : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Gets the camera object from the Unity3D prefab in the scene.
+	/// Gets the camera component from the scene
 	/// </summary>
 	/// <value>The main camera.</value>
 	protected Camera MainCamera {

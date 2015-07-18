@@ -413,7 +413,7 @@ public class FaceAnimator : EmofaniGlobal
 
 		sock.SendTo(send_buffer, endPoint);
 
-		GuiScript.Log("Sent " + message + " to " + hostname + ":" + sendPort);
+		GuiScript.Log("Sent \"" + message + "\" to " + hostname + ":" + sendPort);
 	}
 
 }

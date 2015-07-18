@@ -27,7 +27,19 @@ public class UdpListener : EmofaniGlobal
 			return this.receivePort;
 		}
 		set {
-			receivePort = value;
+			if (value != receivePort) {
+				receivePort = value;
+				if (this.Listening) {
+					Close();
+					StartListening();
+				}
+			}
+		}
+	}
+
+	private bool Listening {
+		get {
+			return listenerThread != null && listenerThread.IsAlive;
 		}
 	}
 

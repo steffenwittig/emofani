@@ -3,7 +3,7 @@
 
 emofani was created as part of my Bachelor's Thesis *Parameterized Facial Animation for Human Robot Interaction* and is a simple program to render a lively animated face to enhance human-robot-interaction. emofani was formerly called *ParamFace*.
 
-![emofani output](http://steffenwittig.com/wp-content/uploads/2015/07/emofani.png "emofani output")
+![emofani output](http://steffenwittig.com/wp-content/uploads/2015/07/emofani-v0.21.jpg "emofani output")
 
 The displayed expression and other parameters can be controlled through interprocess communication, using the UDP protocol. The virtual face and its expressions are designed to raise the willingness of potential users to engage in interaction with a robotic system. The face displays signs of "being alive" (blinking, breathing, micro-movements) to show that it is active.
 

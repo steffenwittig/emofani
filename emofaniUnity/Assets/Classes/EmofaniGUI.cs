@@ -152,6 +152,10 @@ public class EmofaniGUI : EmofaniGlobal
 		FaceAnim.HorizontalHeadMovement = value/100;
 	}
 
+	public void SetBreathingWeight(float value) {
+		FaceAnim.SetBreathingWeight(value/100);
+	}
+
 	/// <summary>
 	/// Shows wether the options menu should be shown
 	/// </summary>

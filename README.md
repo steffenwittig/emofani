@@ -75,7 +75,6 @@ emofani currently features a very simple, low-poly female face design. There are
 # TODO
 To let you know about my plans and what is bugging me about emofani, here's my TODO list:
 
-- implement options to control the amount of head movement for gaze changess
 - save emofani's configuration in a config file to allow editing outside of emofani and storing values for the next start of emofani
 - rework emofani's user interface
 - implement TCP interface

@@ -187,6 +187,16 @@ public class FaceAnimator : EmofaniGlobal
 	}
 
 	/// <summary>
+	/// Sets the breathing animation layer's weight.
+	/// </summary>
+	/// <returns>The breathing weight.</returns>
+	/// <param name="value">Value.</param>
+	public void SetBreathingWeight(float value)
+	{
+		anim.SetLayerWeight(anim.GetLayerIndex("Breathing"), value);
+	}
+
+	/// <summary>
 	/// Awake this instance. Set the Animation Controller as well as eye- and head bones, create Expression objects.
 	/// </summary>
 	protected void Awake()

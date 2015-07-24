@@ -137,6 +137,22 @@ public class EmofaniGUI : EmofaniGlobal
 	}
 
 	/// <summary>
+	/// Sets the vertical head movement.
+	/// </summary>
+	/// <param name="value">Value.</param>
+	public void SetVerticalHeadMovement(float value) {
+		FaceAnim.VerticalHeadMovement = value/100;
+	}
+
+	/// <summary>
+	/// Sets the horizontal head movement.
+	/// </summary>
+	/// <param name="value">Value.</param>
+	public void SetHorizontalHeadMovement(float value) {
+		FaceAnim.HorizontalHeadMovement = value/100;
+	}
+
+	/// <summary>
 	/// Shows wether the options menu should be shown
 	/// </summary>
 	/// <param name="value">If set to <c>true</c>, shows the options menu.</param>

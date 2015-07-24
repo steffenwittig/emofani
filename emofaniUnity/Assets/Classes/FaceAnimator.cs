@@ -16,7 +16,7 @@ public class FaceAnimator : EmofaniGlobal
 	public const int fallbackSendPort = 11001;
 	public string hostname = "";
 	private float arousal, pleasure, gazeXEyes, gazeYEyes, gazeZEyes, gazeXHead, gazeYHead, gazeZHead,
-		eyeRandX, eyeRandY, idleTime, idleChangeTime;
+		eyeRandX, eyeRandY, idleTime, idleChangeTime, verticalHeadMovement = .5f, horizontalHeadMovement = .5f;
 	private int targetArousal, targetPleasure, targetGazeX, targetGazeY, targetGazeZ = 250, sendPort = -1;
 	private long lastInputId;
 	private bool talking, idle, mirrorGaze;
@@ -33,6 +33,25 @@ public class FaceAnimator : EmofaniGlobal
 			mirrorGaze = value;
 		}
 	}
+
+	public float VerticalHeadMovement {
+		get {
+			return this.verticalHeadMovement;
+		}
+		set {
+			verticalHeadMovement = value;
+		}
+	}
+
+	public float HorizontalHeadMovement {
+		get {
+			return this.horizontalHeadMovement;
+		}
+		set {
+			horizontalHeadMovement = value;
+		}
+	}
+
 
 	/// <summary>
 	/// Interprets a message string and, if successful, sets the contained parameters. A response will be sent to the
@@ -299,11 +318,11 @@ public class FaceAnimator : EmofaniGlobal
 	/// </summary>
 	private void SetGaze()
 	{
-
-		// head looks at 15% the position of the eye gaze, so the eyes will
-		// always be visibly rotated when not looking at (0,0,0)
 		int xMod = (MirrorGaze) ? -1 : 1;
-		headBone.LookAt(new Vector3(gazeXHead * xMod, gazeYHead, -gazeZHead) * 0.15f);
+
+		headBone.LookAt(new Vector3(gazeXHead * xMod * horizontalHeadMovement,
+		                            gazeYHead * verticalHeadMovement,
+		                            -gazeZHead));
 
 		// set eye gaze
 		lookAtEyes = new Vector3(gazeXEyes * xMod, gazeYEyes, -gazeZEyes);

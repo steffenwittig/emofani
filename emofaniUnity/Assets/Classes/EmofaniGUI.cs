@@ -19,18 +19,6 @@ public class EmofaniGUI : EmofaniGlobal
 	private bool showDebug = false, showMainMenu = true;
 
 	/// <summary>
-	/// Log the specified text in the Debug Log scroll window
-	/// </summary>
-	/// <param name="text">Text.</param>
-	public void Log(string text)
-	{
-		log += text + "\n";
-		scrollPosition = new Vector2(0, Mathf.Infinity);
-
-		Debug.Log(text);
-	}
-
-	/// <summary>
 	/// Start this instance. Set initial layout variables
 	/// </summary>
 	private void Start()
@@ -39,6 +27,7 @@ public class EmofaniGUI : EmofaniGlobal
 		buttonHeight = 32;
 		textareaHeight = Screen.height - buttonHeight;
 		zeroOffset = new RectOffset(0, 0, 0, 0);
+		HideAllMenuPanels();
 	}
 
 	/// <summary>
@@ -98,6 +87,18 @@ public class EmofaniGUI : EmofaniGlobal
 			}
 
 		}
+	}
+
+	/// <summary>
+	/// Log the specified text in the Debug Log scroll window
+	/// </summary>
+	/// <param name="text">Text.</param>
+	public void Log(string text)
+	{
+		log += text + "\n";
+		scrollPosition = new Vector2(0, Mathf.Infinity);
+		
+		Debug.Log(text);
 	}
 
 	/// <summary>
@@ -215,18 +216,42 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+	/// <summary>
+	/// Sets the "pleasure" parameter of the face animation
+	/// </summary>
+	/// <param name="value">Value.</param>
 	public void SetAnimationValuePleasure(float value) {
 		SetAnimationValue("pleasure", value.ToString());
 	}
 
+	/// <summary>
+	/// Sets the "arousal" parameter of the face animation
+	/// </summary>
+	/// <param name="value">Value.</param>
 	public void SetAnimationValueArousal(float value) {
 		SetAnimationValue("arousal", value.ToString());
     }
 
+	/// <summary>
+	/// Sets the "talking" parameter of the face animation
+	/// </summary>
+	/// <param name="value">If set to <c>true</c> value.</param>
 	public void SetAnimationValueTalking(bool value) {
 		SetAnimationValue("talking", (value)?"true":"false");
 	}
 
+	/// <summary>
+	/// Quit Button Press
+	/// </summary>
+	public void QuitButton(){
+		Application.Quit();
+	}
+
+	/// <summary>
+	/// Sets a parameter for the face animation
+	/// </summary>
+	/// <param name="key">Key.</param>
+	/// <param name="value">Value.</param>
 	private void SetAnimationValue(string key, string value) {
 		string message = "t:" + (messageNo++);
 		message += ";s:127.0.0.1";

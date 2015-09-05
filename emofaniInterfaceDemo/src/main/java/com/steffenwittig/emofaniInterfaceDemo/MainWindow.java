@@ -419,7 +419,7 @@ public class MainWindow extends JFrame {
 		buttons.add(getExpressionButton("happy"));
 		buttons.add(getExpressionButton("sad"));
 		buttons.add(getExpressionButton("attentive"));
-		buttons.add(getExpressionButton("exited"));
+		buttons.add(getExpressionButton("excited"));
 		buttons.add(getExpressionButton("relaxed"));
 		buttons.add(getExpressionButton("sleepy"));
 		buttons.add(getExpressionButton("frustrated"));

@@ -1,0 +1,1 @@
+All PNGs in this folder were generated from Front Awesome icons: https://fortawesome.github.io/Font-Awesome/

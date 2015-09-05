@@ -81,5 +81,5 @@ To let you know about my plans and what is bugging me about emofani, here's my T
 - implement FACS instead of fixed expressions, designed by hand
 - implement a more versatile face design, that can be parameterized to create trustworthy and sympathetic faces for users with varying cultural backgrounds (the current face design was mainly evaluated with German students)
 - implement text-to-speech solution and phoneme based lip animation
-- the `exited` expression looks wrong when `talking` is set to true
+- the `excited` expression looks wrong when `talking` is set to true
 - implement measures for back-projection systems to correct the keystone effect and possibly other distortions

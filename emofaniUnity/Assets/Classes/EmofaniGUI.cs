@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.Net;
 
 /// <summary>
 /// Emofani GUI. Displays a GUI to set options or show debug output
@@ -9,13 +10,13 @@ using System;
 public class EmofaniGUI : EmofaniGlobal
 {
 
-	public GameObject optionsObject;
+	public GameObject menuObjectMain, menuObjectInfo, menuObjectOptions, menuObjectSliders;
 
 	private string log = "";
-	private int yStart, buttonHeight, textareaHeight;
+	private int yStart, buttonHeight, textareaHeight, messageNo;
 	private RectOffset zeroOffset;
 	private Vector2 scrollPosition;
-	private bool showDebug = false, showOptions = true;
+	private bool showDebug = false, showMainMenu = true;
 
 	/// <summary>
 	/// Log the specified text in the Debug Log scroll window
@@ -46,14 +47,25 @@ public class EmofaniGUI : EmofaniGlobal
 	private void Update()
 	{
 		// register Keypresses
-		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.F1)) {
-			showDebug = !showDebug;
-			if (showDebug) ShowOptions(false);
+
+		if (Input.GetKeyUp(KeyCode.I) || Input.GetKeyUp(KeyCode.F1)) {
+			ToggleMenuPanel("Info");
 		}
-		if (Input.GetKeyUp(KeyCode.M) || Input.GetKeyUp(KeyCode.F2)) {
-			ToggleOptions();
-			if (showOptions) showDebug = false;
+		if (Input.GetKeyUp(KeyCode.O) || Input.GetKeyUp(KeyCode.F2)) {
+			ToggleMenuPanel("Options");
 		}
+		if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.F3)) {
+			ToggleMenuPanel("Sliders");
+		}
+
+		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.F4)) {
+			ToggleMenuPanel("Debug");
+		}
+
+		if (Input.GetKeyUp(KeyCode.H) || Input.GetKeyUp(KeyCode.F5)) {
+			ToggleMainMenu();
+		}
+
 		if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.F12)) {
 			Application.Quit();
 		}
@@ -152,24 +164,76 @@ public class EmofaniGUI : EmofaniGlobal
 		FaceAnim.HorizontalHeadMovement = value/100;
 	}
 
+	/// <summary>
+	/// Sets the breathing weight.
+	/// </summary>
+	/// <param name="value">Value.</param>
 	public void SetBreathingWeight(float value) {
 		FaceAnim.SetBreathingWeight(value/100);
 	}
 
 	/// <summary>
-	/// Shows wether the options menu should be shown
+	/// Toggles the main menu.
 	/// </summary>
-	/// <param name="value">If set to <c>true</c>, shows the options menu.</param>
-	public void ShowOptions(bool value){
-		if (optionsObject != null) optionsObject.SetActive(value);
-		showOptions = value;
+	public void ToggleMainMenu(){
+		if (menuObjectMain != null) menuObjectMain.SetActive(showMainMenu = !showMainMenu);
 	}
 
 	/// <summary>
-	/// Toggles the options menu.
+	/// Hides all menu panels.
 	/// </summary>
-	public void ToggleOptions(){
-		ShowOptions(!showOptions);
+	public void HideAllMenuPanels() {
+		if (menuObjectInfo != null) menuObjectInfo.SetActive(false);
+		if (menuObjectSliders != null) menuObjectSliders.SetActive(false);
+		if (menuObjectOptions != null) menuObjectOptions.SetActive(false);
+		showDebug = false;
+	}
+
+	/// <summary>
+	/// Toggles certain menu panels (and hides the others).
+	/// </summary>
+	/// <param name="target">Target.</param>
+	public void ToggleMenuPanel(string target){
+		bool currentVisibility = false;
+		if (target == "Debug") {
+			// Debug-"Panel" is a special case at the moment
+			currentVisibility = showDebug;
+			HideAllMenuPanels();
+			showDebug = !currentVisibility;
+		} else {
+			GameObject panelObject = null;
+			try {
+				panelObject = (GameObject)this.GetType().GetField("menuObject" + target).GetValue(this);
+			} catch(Exception e) {
+				Debug.Log (e.Message);
+			}
+			if (panelObject != null) {
+				currentVisibility = panelObject.activeSelf;
+				HideAllMenuPanels();
+				panelObject.SetActive(!currentVisibility);
+			}
+		}
+	}
+
+	public void SetAnimationValuePleasure(float value) {
+		SetAnimationValue("pleasure", value.ToString());
+	}
+
+	public void SetAnimationValueArousal(float value) {
+		SetAnimationValue("arousal", value.ToString());
+    }
+
+	public void SetAnimationValueTalking(bool value) {
+		SetAnimationValue("talking", (value)?"true":"false");
+	}
+
+	private void SetAnimationValue(string key, string value) {
+		string message = "t:" + (messageNo++);
+		message += ";s:127.0.0.1";
+		message += ";p:0";
+		message += ";d:" + key + "=" + value;
+		Debug.Log (message);
+		FaceAnim.HandleMessage(message);
 	}
 
 }

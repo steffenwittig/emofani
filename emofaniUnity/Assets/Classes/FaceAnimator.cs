@@ -61,6 +61,8 @@ public class FaceAnimator : EmofaniGlobal
 	public void HandleMessage(string message)
 	{
 
+		Debug.Log ("Input:" + message);
+
 		try {
 
 			long timestamp = 0;
@@ -211,7 +213,7 @@ public class FaceAnimator : EmofaniGlobal
 		expressions.Add("attentive", new Expression(-0, 91));
 		expressions.Add("sleepy", new Expression(5, -97));
 		expressions.Add("frustrated", new Expression(-56, 44));
-		expressions.Add("exited", new Expression(63, 72));
+		expressions.Add("excited", new Expression(63, 72));
 		expressions.Add("relaxed", new Expression(70, -64));
 
 		leftEyeBone = GameObject.Find("Face/FaceRig/Chest/Neck/Head/Eye_L").transform;

@@ -51,6 +51,15 @@ public class FaceAnimator : EmofaniGlobal
 			horizontalHeadMovement = value;
 		}
 	}
+	
+	public float BreathingWeight {
+		get {
+			return anim.GetLayerWeight(anim.GetLayerIndex("Breathing"));
+		}
+		set {
+			anim.SetLayerWeight(anim.GetLayerIndex("Breathing"), value);
+		}
+	}
 
 
 	/// <summary>
@@ -186,16 +195,6 @@ public class FaceAnimator : EmofaniGlobal
 			throw new Exception("Expression error: " + e.Message + " ");
 
 		}
-	}
-
-	/// <summary>
-	/// Sets the breathing animation layer's weight.
-	/// </summary>
-	/// <returns>The breathing weight.</returns>
-	/// <param name="value">Value.</param>
-	public void SetBreathingWeight(float value)
-	{
-		anim.SetLayerWeight(anim.GetLayerIndex("Breathing"), value);
 	}
 
 	/// <summary>

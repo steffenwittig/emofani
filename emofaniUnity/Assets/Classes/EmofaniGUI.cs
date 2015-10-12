@@ -16,7 +16,7 @@ public class EmofaniGUI : EmofaniGlobal
 	settingsObjectPort;
 
 	private string log = "";
-	private int yStart, buttonHeight, textareaHeight, messageNo;
+	private int yStart, buttonHeight, textareaHeight;
 	private RectOffset zeroOffset;
 	private Vector2 scrollPosition;
 	private bool showDebug = false, showMainMenu = true;
@@ -330,7 +330,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="key">Key.</param>
 	/// <param name="value">Value.</param>
 	private void SetAnimationValue(string key, string value) {
-		string message = "t:" + (messageNo++);
+		string message = "t:" + (FaceAnim.LastInputId+1);
 		message += ";s:127.0.0.1";
 		message += ";p:0";
 		message += ";d:" + key + "=" + value;

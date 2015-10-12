@@ -61,6 +61,12 @@ public class FaceAnimator : EmofaniGlobal
 		}
 	}
 
+	public long LastInputId {
+		get {
+			return this.lastInputId;
+		}
+	}
+
 
 	/// <summary>
 	/// Interprets a message string and, if successful, sets the contained parameters. A response will be sent to the

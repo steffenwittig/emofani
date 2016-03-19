@@ -20,7 +20,11 @@ public class EmofaniGUI : EmofaniGlobal
 	private RectOffset zeroOffset;
 	private Vector2 scrollPosition;
 	private bool showDebug = false, showMainMenu = true;
+    private EmofaniConfig config;
 
+    /// <summary>
+    /// Get/Set the port to listen for UDP messages
+    /// </summary>
 	private int Port {
 		get {
 			return this.Listener.ReceivePort;
@@ -30,6 +34,9 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+    /// <summary>
+    /// Get/Set the brightness of the background
+    /// </summary>
 	private float BackgroundBrightness {
 		get {
 			return MainCamera.backgroundColor.r;
@@ -39,6 +46,9 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+    /// <summary>
+    /// Get/Set the scale of the scene
+    /// </summary>
 	private float Scale {
 		get {
 			return MainCamera.fieldOfView;
@@ -48,6 +58,9 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+    /// <summary>
+    /// Get/Set the vertical position of the scene
+    /// </summary>
 	private float FacePosVert {
 		get {
 			return MainCamera.transform.position.y;
@@ -57,6 +70,9 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+    /// <summary>
+    /// Get/Set the rotation of the scene
+    /// </summary>
 	private float Rotation {
 		get {
 			float angle = MainCamera.transform.rotation.eulerAngles.z;
@@ -68,6 +84,9 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+    /// <summary>
+    /// Get/Set the amount of vertical head movement when looking at gaze coordinates
+    /// </summary>
 	private float HeadMovVert {
 		get {
 			return FaceAnim.VerticalHeadMovement*100;
@@ -77,6 +96,9 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+    /// <summary>
+    /// Get/Set the amount of horizontal head movement when looking at gaze coordinates
+    /// </summary>
 	private float HeadMovHor {
 		get {
 			return FaceAnim.HorizontalHeadMovement*100;
@@ -86,6 +108,9 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
+    /// <summary>
+    /// Get/Set the amount of up and down movement from breathing
+    /// </summary>
 	private float BreathInt {
 		get {
 			return FaceAnim.BreathingWeight*100;
@@ -104,6 +129,7 @@ public class EmofaniGUI : EmofaniGlobal
 		buttonHeight = 32;
 		textareaHeight = Screen.height - buttonHeight;
 		zeroOffset = new RectOffset(0, 0, 0, 0);
+        config = EmofaniConfig.Instance;
 		HideAllMenuPanels();
 		InitInputs();
 	}
@@ -167,11 +193,16 @@ public class EmofaniGUI : EmofaniGlobal
 		}
 	}
 
-	/// <summary>
-	/// Log the specified text in the Debug Log scroll window
-	/// </summary>
-	/// <param name="text">Text.</param>
-	public void Log(string text)
+    private void OnApplicationQuit()
+    {
+        config.Save();
+    }
+
+    /// <summary>
+    /// Log the specified text in the Debug Log scroll window
+    /// </summary>
+    /// <param name="text">Text.</param>
+    public void Log(string text)
 	{
 		log += text + "\n";
 		scrollPosition = new Vector2(0, Mathf.Infinity);
@@ -185,7 +216,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetPort(string value) {
 		Port = int.Parse(value);
-		PlayerPrefs.SetInt("port", Port);
+        config.SetInt("port", Port);
 	}
 
 	/// <summary>
@@ -194,7 +225,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetBackgroundBrightness(float value) {
 		BackgroundBrightness = value;
-		PlayerPrefs.SetFloat("BgBrightness", value);
+        config.SetFloat("BgBrightness", value);
 	}
 
 	/// <summary>
@@ -203,7 +234,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetScale(float value) {
 		Scale = value;
-		PlayerPrefs.SetFloat("Scale", value);
+        config.SetFloat("Scale", value);
 	}
 
 	/// <summary>
@@ -212,7 +243,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetVerticalPosition(float value){
 		FacePosVert = value;
-		PlayerPrefs.SetFloat("FacePosVert", value);
+        config.SetFloat("FacePosVert", value);
 	}
 
 	/// <summary>
@@ -221,7 +252,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetRotation(float value){
 		Rotation = value;
-		PlayerPrefs.SetFloat("Rotation", value);
+        config.SetFloat("Rotation", value);
 	}
 
 	/// <summary>
@@ -230,7 +261,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">If set to <c>true</c>, flips the horizontal gaze.</param>
 	public void SetFlipGaze(bool value) {
 		FaceAnim.MirrorGaze = value;
-		PlayerPrefs.SetInt("MirrorGaze", (value)?1:0);
+        config.SetInt("MirrorGaze", (value)?1:0);
 	}
 
 	/// <summary>
@@ -239,7 +270,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetVerticalHeadMovement(float value) {
 		HeadMovVert = value;
-		PlayerPrefs.SetFloat ("HeadMovVert", value);
+        config.SetFloat ("HeadMovVert", value);
 	}
 
 	/// <summary>
@@ -248,7 +279,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetHorizontalHeadMovement(float value) {
 		HeadMovHor = value;
-		PlayerPrefs.SetFloat ("HeadMovHor", value);
+        config.SetFloat ("HeadMovHor", value);
 	}
 
 	/// <summary>
@@ -257,7 +288,7 @@ public class EmofaniGUI : EmofaniGlobal
 	/// <param name="value">Value.</param>
 	public void SetBreathingWeight(float value) {
 		BreathInt = value;
-		PlayerPrefs.SetFloat ("BreathInt", value);
+        config.SetFloat ("BreathInt", value);
 	}
 
 	/// <summary>
@@ -348,51 +379,54 @@ public class EmofaniGUI : EmofaniGlobal
 		showDebug = false;
 	}
 
+    /// <summary>
+    /// Initialize input elements with either default values or values loaded from the config file
+    /// </summary>
 	private void InitInputs(){
 
 		if (settingsObjectPort != null) {
-			Port = PlayerPrefs.GetInt("port", 11000);
+			Port = config.GetInt("port", 11000);
 			settingsObjectPort.GetComponent<InputField>().text = Port.ToString();
 		}
 
 		if (settingsObjectBgBrightness != null) {
-			BackgroundBrightness = PlayerPrefs.GetFloat("BgBrightness", 0.1f);
+			BackgroundBrightness = config.GetFloat("BgBrightness", 0.1f);
 			settingsObjectBgBrightness.GetComponent<Slider>().value = BackgroundBrightness;
 		}
 
 		if (settingsObjectScale != null) {
-			Scale = PlayerPrefs.GetFloat("Scale", 10f);
+			Scale = config.GetFloat("Scale", 10f);
 			settingsObjectScale.GetComponent<Slider>().value = Scale;
 		}
 
 		if (settingsObjectFacePosVert != null) {
-			FacePosVert = PlayerPrefs.GetFloat("FacePosVert", -1.8f);
+			FacePosVert = config.GetFloat("FacePosVert", -1.8f);
 			settingsObjectFacePosVert.GetComponent<Slider>().value = FacePosVert;
 		}
 
 		if (settingsObjectRotation != null) {
-			Rotation = PlayerPrefs.GetFloat ("Rotation", 0);
+			Rotation = config.GetFloat ("Rotation", 0);
 			settingsObjectRotation.GetComponent<Slider>().value = Rotation;
 		}
 
 		if (settingsObjectHeadMovVert != null) {
-			HeadMovVert = PlayerPrefs.GetFloat ("HeadMovVert", 50);
+			HeadMovVert = config.GetFloat ("HeadMovVert", 50);
 			settingsObjectHeadMovVert.GetComponent<Slider>().value = HeadMovVert;
 		}
 
 		if (settingsObjectHeadMovHor != null) {
-			HeadMovHor = PlayerPrefs.GetFloat ("HeadMovHor", 50);
+			HeadMovHor = config.GetFloat ("HeadMovHor", 50);
 			settingsObjectHeadMovVert.GetComponent<Slider>().value = HeadMovHor;
 		}
 
 		if (settingObjectMirrorGaze != null) {
 			settingObjectMirrorGaze.GetComponent<Toggle>().isOn =
 				FaceAnim.MirrorGaze = 
-				(PlayerPrefs.GetInt("MirrorGaze", 0) == 1);
+				(config.GetInt("MirrorGaze", 0) == 1);
 		}
 
 		if (settingsObjectBreathInt != null) {
-			BreathInt = PlayerPrefs.GetFloat ("BreathInt", 50);
+			BreathInt = config.GetFloat ("BreathInt", 50);
 			settingsObjectBreathInt.GetComponent<Slider>().value = BreathInt;
 		}
 

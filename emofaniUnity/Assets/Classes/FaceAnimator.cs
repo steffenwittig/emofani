@@ -15,15 +15,16 @@ public class FaceAnimator : EmofaniGlobal
 
 	public const int fallbackSendPort = 11001;
 	public string hostname = "";
-	private float arousal, pleasure, gazeXEyes, gazeYEyes, gazeZEyes, gazeXHead, gazeYHead, gazeZHead,
+	private float arousal, pleasure, blush, gazeXEyes, gazeYEyes, gazeZEyes, gazeXHead, gazeYHead, gazeZHead,
 		eyeRandX, eyeRandY, idleTime, idleChangeTime, verticalHeadMovement = .5f, horizontalHeadMovement = .5f;
-	private int targetArousal, targetPleasure, targetGazeX, targetGazeY, targetGazeZ = 250, sendPort = -1;
+	private int targetArousal, targetPleasure, targetBlush, targetGazeX, targetGazeY, targetGazeZ = 250, sendPort = -1;
 	private long lastInputId;
 	private bool talking, idle, mirrorGaze;
 	private Vector3 lookAtEyes;
 	private Transform leftEyeBone, rightEyeBone, headBone, focusPoint;
 	private Dictionary<string,Expression> expressions;
 	private Animator anim;
+    private Material material;
 
 	public bool MirrorGaze {
 		get {
@@ -153,6 +154,9 @@ public class FaceAnimator : EmofaniGlobal
 				case "gazez":
 					targetGazeZ = int.Parse(value);
 					break;
+                case "blush":
+                    targetBlush = int.Parse(value);
+                    break;
 				case "expression":
 					SetExpression(value);
 					break;
@@ -224,6 +228,7 @@ public class FaceAnimator : EmofaniGlobal
 		leftEyeBone = GameObject.Find("Face/FaceRig/Chest/Neck/Head/Eye_L").transform;
 		rightEyeBone = GameObject.Find("Face/FaceRig/Chest/Neck/Head/Eye_R").transform;
 		headBone = GameObject.Find("Face/FaceRig/Chest/Neck/Head").transform;
+        material = GetComponentInChildren<Renderer>().materials[0];
 
 		// this is just a little helper in the editor (I used it during debugging and left it in)
 		focusPoint = new GameObject("FocusPoint").transform;
@@ -246,12 +251,24 @@ public class FaceAnimator : EmofaniGlobal
 		float gazeTEyes = Time.deltaTime * 6; // time to use for eye lookAt position blending
 		float gazeTHead = Time.deltaTime; // time to use for head lookAt position blending
 
-		// interpolate between current values and target values
+		/*
+         * interpolate between current values and target values
+         */
+
+        // Arousal (Animation Controller)
 		arousal = Mathf.Lerp(GetFloat("arousal"), (float)targetArousal, expT);
 		SetFloat("arousal", arousal);
+
+        // Pleasure (Animation Controller)
 		pleasure = Mathf.Lerp(GetFloat("pleasure"), (float)targetPleasure, expT);
 		SetFloat("pleasure", pleasure);
-		gazeXEyes = Mathf.Lerp(gazeXEyes, (float)targetGazeX, gazeTEyes);
+
+        // Blush (Shader Property)
+        blush = Mathf.Lerp(blush, (float)targetBlush, expT);
+        material.SetFloat("_BlushIntensity", (float)blush/100);
+
+        // Gaze (Bone-Rotation updated in LateUpdate())
+        gazeXEyes = Mathf.Lerp(gazeXEyes, (float)targetGazeX, gazeTEyes);
 		gazeYEyes = Mathf.Lerp(gazeYEyes, (float)targetGazeY, gazeTEyes);
 		gazeZEyes = Mathf.Lerp(gazeZEyes, (float)targetGazeZ, gazeTEyes);
 		gazeXHead = Mathf.Lerp(gazeXHead, (float)targetGazeX, gazeTHead);
@@ -411,7 +428,8 @@ public class FaceAnimator : EmofaniGlobal
 		string message = "status:OK;";
 		message += "arousal:" + targetArousal + ";";
 		message += "pleasure:" + targetPleasure + ";";
-		message += "gazex:" + targetGazeX + ";";
+        message += "blush:" + targetBlush + ";";
+        message += "gazex:" + targetGazeX + ";";
 		message += "gazey:" + targetGazeY + ";";
 		message += "gazez:" + targetGazeZ + ";";
 		message += "talking:" + talking.ToString().ToLower() + ";";

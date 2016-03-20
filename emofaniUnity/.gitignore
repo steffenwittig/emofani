@@ -19,3 +19,10 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# Project related files
+emofani.config
+*.blend1
+*.blend1.meta
+*.blend2
+*.blend2.meta

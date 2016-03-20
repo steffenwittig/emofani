@@ -26,7 +26,7 @@ public class MainWindow extends JFrame {
 	private static JTextField hostField, sendPortField, receivePortField,
 			timeoutField, talkField;
 
-	private JSlider arousalSlider, pleasureSlider, gazeXSlider, gazeYSlider,
+	private JSlider arousalSlider, pleasureSlider, blushSlider, gazeXSlider, gazeYSlider,
 			gazeZSlider, expressionInstensitySlider;
 	private JToggleButton talkingButton, idleButton;
 
@@ -375,6 +375,7 @@ public class MainWindow extends JFrame {
 
 		arousalSlider = addParamSlider("arousal", -100, 100, emotionPanel);
 		pleasureSlider = addParamSlider("pleasure", -100, 100, emotionPanel);
+		blushSlider = addParamSlider("blush", 0, 100, emotionPanel);
 
 		/*
 		 * create Gaze panel

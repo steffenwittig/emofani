@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: 49ae6c722c74c1d419557bb57d7d9d70
+timeCreated: 1458462348
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: CenterBrow_L
+    100002: CenterBrow_R
+    100004: Chest
+    100006: Eye_L
+    100008: Eye_R
+    100010: Face
+    100012: //RootNode
+    100014: FaceRig
+    100016: Head
+    100018: InnerBrow_L
+    100020: InnerBrow_R
+    100022: Lips_L
+    100024: Lips_R
+    100026: LowerLidCenter_L
+    100028: LowerLidCenter_R
+    100030: LowerLidInner_L
+    100032: LowerLidInner_R
+    100034: LowerLidOuter_L
+    100036: LowerLidOuter_R
+    100038: LowerLip
+    100040: Neck
+    100042: OuterBrow_L
+    100044: OuterBrow_R
+    100046: UpperLidCenter_L
+    100048: UpperLidCenter_R
+    100050: UpperLidInner_L
+    100052: UpperLidInner_R
+    100054: UpperLidOuter_L
+    100056: UpperLidOuter_R
+    100058: UpperLip
+    400000: CenterBrow_L
+    400002: CenterBrow_R
+    400004: Chest
+    400006: Eye_L
+    400008: Eye_R
+    400010: Face
+    400012: //RootNode
+    400014: FaceRig
+    400016: Head
+    400018: InnerBrow_L
+    400020: InnerBrow_R
+    400022: Lips_L
+    400024: Lips_R
+    400026: LowerLidCenter_L
+    400028: LowerLidCenter_R
+    400030: LowerLidInner_L
+    400032: LowerLidInner_R
+    400034: LowerLidOuter_L
+    400036: LowerLidOuter_R
+    400038: LowerLip
+    400040: Neck
+    400042: OuterBrow_L
+    400044: OuterBrow_R
+    400046: UpperLidCenter_L
+    400048: UpperLidCenter_R
+    400050: UpperLidInner_L
+    400052: UpperLidInner_R
+    400054: UpperLidOuter_L
+    400056: UpperLidOuter_R
+    400058: UpperLip
+    2300000: Face
+    3300000: Face
+    4300000: Face
+    7400000: Default Take
+    7400002: Exited
+    7400004: Breathing
+    7400006: Attentive
+    7400008: Blinking
+    7400010: Frustrated
+    7400012: Happy
+    7400014: MicroMovements
+    7400016: Neutral
+    7400018: Relaxed
+    7400020: Sad
+    7400022: Sleepy
+    7400024: Talking
+    9500000: //RootNode
+    13700000: Face
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

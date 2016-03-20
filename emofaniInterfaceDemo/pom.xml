@@ -4,7 +4,7 @@
 
 	<groupId>com.steffenwittig</groupId>
 	<artifactId>emofaniInterfaceDemo</artifactId>
-	<version>0.22</version>
+	<version>0.23</version>
 	<packaging>jar</packaging>
 
 	<name>emofaniInterfaceDemo</name>

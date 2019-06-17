@@ -3,19 +3,20 @@
 
 emofani was created as part of my Bachelor's Thesis *Parameterized Facial Animation for Human Robot Interaction* and is a simple program to render a lively animated face to enhance human-robot-interaction. emofani was formerly called *ParamFace*.
 
-![emofani output](http://steffenwittig.com/wp-content/uploads/2015/07/emofani-v0.21.jpg "emofani output")
+Here's a demonstration video of emofani:
+[![emofani demonstration](https://img.youtube.com/vi/UqskJZWkK5A/0.jpg)](https://www.youtube.com/watch?v=UqskJZWkK5A)
 
 The displayed expression and other parameters can be controlled through interprocess communication, using the UDP protocol. The virtual face and its expressions are designed to raise the willingness of potential users to engage in interaction with a robotic system. The face displays signs of "being alive" (blinking, breathing, micro-movements) to show that it is active.
 
-![emofani architecture](http://steffenwittig.com/wp-content/uploads/2015/07/emofani_architecture.png "emofani architecture")
+![emofani architecture](https://user-images.githubusercontent.com/6610069/59624503-32061900-9137-11e9-938b-78f16843a1ea.png "emofani architecture")
 
 emofani's expression parameters are based on James A. Russell's [*circumplex model of emotion*](https://en.wikipedia.org/wiki/Emotion_classification#Circumplex_model), a two-dimensional emotion model. The widely used [*FACS*](https://en.wikipedia.org/wiki/Facial_Action_Coding_System) system would be richer but less intuitive to use. However, using FACS values internally would help to create more precise expressions, instead of the current expressions, that are designed by heart. This is on the TODO list.
 
-![emofani emotion space](http://steffenwittig.com/wp-content/uploads/2015/07/emofani_emotion_space.png "emofani emotion space")
+![emofani emotion space](https://user-images.githubusercontent.com/6610069/59624135-485fa500-9136-11e9-8b38-ffe82e54726d.png "emofani emotion space")
+
+![emofani client](https://user-images.githubusercontent.com/6610069/59624219-793fda00-9136-11e9-9c04-9ea75365b550.png "emofani client")
 
 I have created this repository to share emofani, to find collaborators to extend its features ([feel free to contact me](mailto:emofani@steffenwittig.com)), and hopefully turn it into a useful and professional software for human-robot-interaction.
-
-You can find a bit more information and a video here: [http://steffenwittig.com/bsc-thesis](http://steffenwittig.com/bsc-thesis)
 
 ## Projects
 The Unity engine was used to implement emofani. All project files reside in the "emofaniUnity" folder. A simple GUI to test emofani's UDP interface was implemented in Java 1.7 and can be found in the "InterfaceGUI" folder.
